@@ -512,9 +512,10 @@ function updatePositions() {
 
   //faster dom SELECTOR
   //CAN WE CACHE THE ELEMTNS OUTSIDE THE LOOPS
+  var itemLength = items.length;
   var items = document.querySelectorAll('.mover');
   var phase;
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0; i < itemLength; i++) {
     //write phrase to the conosole, can you identity a pattern?
     //if yes, can we calculate teh phases outside teh loop 
     phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
