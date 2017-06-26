@@ -490,10 +490,14 @@ var frame = 0;
 function logAverageFrame(times) {   
   var numberOfEntries = times.length;
   var sum = 0;
-  for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
-    sum = sum + times[i].duration;
-  }
-  console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
+//   for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
+//     sum = sum + times[i].duration;
+//   }
+//   console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
+    for (var a = e.length, r = 0, n = a - 1; n > a - 11; n--) {
+      r += e[n].duration;
+    }
+    console.log("Average scripting time to generate last 10 frames: " + r / 10 + "ms")
 }
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
