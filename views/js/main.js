@@ -511,9 +511,9 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  var itemLength = items.length();
   var phase;
-  for (var i = 0; i < itemLength; i++) {
+  var myLength = items.length; 
+  for (var i = 0; i < myLength; i++) {
     //write phrase to the conosole, can you identity a pattern?
     //if yes, can we calculate teh phases outside teh loop 
     phase = Math.sin((document.body.scrollTop / 1250) + (i % 5)); 
