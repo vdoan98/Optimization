@@ -510,10 +510,8 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  //faster dom SELECTOR
-  //CAN WE CACHE THE ELEMTNS OUTSIDE THE LOOPS
   var items = document.querySelectorAll('.mover');
-  var itemLength = items.length;
+  var itemLength = items.length();
   var phase;
   for (var i = 0; i < itemLength; i++) {
     //write phrase to the conosole, can you identity a pattern?
