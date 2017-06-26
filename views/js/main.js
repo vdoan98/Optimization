@@ -490,14 +490,14 @@ var frame = 0;
 function logAverageFrame(times) {   
   var numberOfEntries = times.length;
   var sum = 0;
-//   for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
-//     sum = sum + times[i].duration;
-//   }
-//   console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
-    for (var a = e.length, r = 0, n = a - 1; n > a - 11; n--) {
-      r += e[n].duration;
-    }
-    console.log("Average scripting time to generate last 10 frames: " + r / 10 + "ms")
+  for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
+    sum = sum + times[i].duration;
+  }
+  console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
+//     for (var a = e.length, r = 0, n = a - 1; n > a - 11; n--) {
+//       r += e[n].duration;
+//     }
+//     console.log("Average scripting time to generate last 10 frames: " + r / 10 + "ms")
 }
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
@@ -511,32 +511,33 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
 
-//   var items = document.getElementsByClass('.mover');
+  var items = document.getElementsByClassName('mover');
   var phase;
-  for (var e = document.getElementsByClassName("mover"), a = document.body.scrollTop / 1250, r = e.length; r--;) {
-        var n = Math.sin(a + r % 5);
-        e[r].style.transform = "translateX(" + 100 * n + "px)"
-    }
-    if (window.performance.mark("mark_end_frame"), window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame"), frame % 10 === 0) {
-        var i = window.performance.getEntriesByName("measure_frame_duration");
-        logAverageFrame(i)
-    }
-//   for (var i = 0; i < items.length; i++) {
+//   for (var e = document.getElementsByClassName("mover"), a = document.body.scrollTop / 1250, r = e.length; r--;) {
+//         var n = Math.sin(a + r % 5);
+//         e[r].style.transform = "translateX(" + 100 * n + "px)"
+//     }
+//     if (window.performance.mark("mark_end_frame"), window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame"), frame % 10 === 0) {
+//         var i = window.performance.getEntriesByName("measure_frame_duration");
+//         logAverageFrame(i)
+//     }
+  var a = (document.body.scrollTop / 1250);
+  for (var i = 0; i < items.length; i++) {
     //write phrase to the conosole, can you identity a pattern?
     //if yes, can we calculate teh phases outside teh loop 
-//     phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-//     console.log(document.body.scrollTop / 1250);
-//     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-//   }
+    phase = Math.sin(a + (i % 5));
+    console.log(document.body.scrollTop / 1250);
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
-//   window.performance.mark("mark_end_frame");
-//   window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-//   if (frame % 10 === 0) {
-//     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-//     logAverageFrame(timesToUpdatePosition);
-//   }
+  window.performance.mark("mark_end_frame");
+  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  if (frame % 10 === 0) {
+    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+    logAverageFrame(timesToUpdatePosition);
+  }
 }
 
 // runs updatePositions on scroll
