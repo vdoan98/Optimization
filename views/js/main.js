@@ -518,7 +518,7 @@ function updatePositions() {
     //write phrase to the conosole, can you identity a pattern?
     //if yes, can we calculate teh phases outside teh loop 
 //     phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    console.log(document.body.scrollTop / 1250);
+//     console.log(document.body.scrollTop / 1250);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
