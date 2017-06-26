@@ -513,31 +513,29 @@ function updatePositions() {
 
   var items = document.getElementsByClassName('mover');
   var phase;
-//   for (var e = document.getElementsByClassName("mover"), a = document.body.scrollTop / 1250, r = e.length; r--;) {
-//         var n = Math.sin(a + r % 5);
-//         e[r].style.transform = "translateX(" + 100 * n + "px)"
-//     }
-//     if (window.performance.mark("mark_end_frame"), window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame"), frame % 10 === 0) {
-//         var i = window.performance.getEntriesByName("measure_frame_duration");
-//         logAverageFrame(i)
-//     }
-  var a = (document.body.scrollTop / 1250);
-  for (var i = 0; i < items.length; i++) {
-    //write phrase to the conosole, can you identity a pattern?
-    //if yes, can we calculate teh phases outside teh loop 
-    phase = Math.sin(a + (i % 5));
-    console.log(document.body.scrollTop / 1250);
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+  for (var e = document.getElementsByClassName("mover"), a = document.body.scrollTop / 1250, r = e.length; r--;) {
+        var n = Math.sin(a + r % 5);
+        e[r].style.transform = "translateX(" + 100 * n + "px)"
+    }
+    if (window.performance.mark("mark_end_frame"), window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame"), frame % 10 === 0) {
+        var i = window.performance.getEntriesByName("measure_frame_duration");
+        logAverageFrame(i)
+    }
+//   var a = (document.body.scrollTop / 1250);
+//   for (var i = 0; i < items.length; i++) {
+//     phase = Math.sin(a + (i % 5));
+//     console.log(document.body.scrollTop / 1250);
+//     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+//   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
-  window.performance.mark("mark_end_frame");
-  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-  }
+//   window.performance.mark("mark_end_frame");
+//   window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+//   if (frame % 10 === 0) {
+//     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+//     logAverageFrame(timesToUpdatePosition);
+//   }
 }
 
 // runs updatePositions on scroll
