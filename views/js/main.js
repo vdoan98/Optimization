@@ -513,10 +513,11 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
   var phase;
+  phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
   for (var i = 0; i < items.length; i++) {
     //write phrase to the conosole, can you identity a pattern?
     //if yes, can we calculate teh phases outside teh loop 
-    phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+//     phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     console.log(phase);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
