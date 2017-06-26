@@ -513,9 +513,9 @@ function updatePositions() {
 
   var items = document.getElementsByClassName('mover');
   var phase;
-  for (var e = document.getElementsByClassName("mover"), a = document.body.scrollTop / 1250, r = e.length; r--;) {
+  for ( a = document.body.scrollTop / 1250, r = items.length; r--;) {
         var n = Math.sin(a + r % 5);
-        e[r].style.transform = "translateX(" + 100 * n + "px)"
+        items[r].style.transform = "translateX(" + 100 * n + "px)"
     }
     if (window.performance.mark("mark_end_frame"), window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame"), frame % 10 === 0) {
         var i = window.performance.getEntriesByName("measure_frame_duration");
